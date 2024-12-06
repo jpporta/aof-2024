@@ -1,17 +1,15 @@
 package p4
 
 import (
-	"log"
 	"strings"
 )
 
 func First(input string) int {
 	count := 0
 	lines := strings.Split(input, "\n")
+	lines = lines[:len(lines)-1]
 	for y := range lines {
 		for x := range lines[y] {
-			log.Println(x, y)
-			log.Println(lines[y])
 			if len(lines[y]) == 0 {
 				continue
 			}
@@ -20,35 +18,34 @@ func First(input string) int {
 			}
 			// are there enough lines below - vertical
 			if y <= len(lines)-4 {
-				if lines[y+1][x] == 'M' && lines[y+2][x] == 'A' && lines[y+3][x] == 'S' {
+				if lines[y][x] == 'X' && lines[y+1][x] == 'M' && lines[y+2][x] == 'A' && lines[y+3][x] == 'S' {
 					count++
-				} else if lines[y+1][x] == 'A' && lines[y+2][x] == 'M' && lines[y+3][x] == 'X' {
+				} else if lines[y][x] == 'S' && lines[y+1][x] == 'A' && lines[y+2][x] == 'M' && lines[y+3][x] == 'X' {
 					count++
 				}
 			}
 			// are there enough lines to the right - horizontal
 			if x <= len(lines[y])-4 {
-				if lines[y][x+1] == 'M' && lines[y][x+2] == 'A' && lines[y][x+3] == 'S' {
+				if lines[y][x] == 'X' && lines[y][x+1] == 'M' && lines[y][x+2] == 'A' && lines[y][x+3] == 'S' {
 					count++
-				} else if lines[y][x+1] == 'A' && lines[y][x+2] == 'M' && lines[y][x+3] == 'X' {
+				} else if lines[y][x] == 'S' && lines[y][x+1] == 'A' && lines[y][x+2] == 'M' && lines[y][x+3] == 'X' {
 					count++
 				}
 			}
 
 			// both checks - diagonal bellow
-			if y <= len(lines)-5 && x <= len(lines[y])-4 {
-				log.Println(y, len(lines)-4)
-				if lines[y+1][x+1] == 'M' && lines[y+2][x+2] == 'A' && lines[y+3][x+3] == 'S' {
+			if y <= len(lines)-4 && x <= len(lines[y])-4 {
+				if lines[y][x] == 'X' && lines[y+1][x+1] == 'M' && lines[y+2][x+2] == 'A' && lines[y+3][x+3] == 'S' {
 					count++
-				} else if lines[y+1][x+1] == 'A' && lines[y+2][x+2] == 'M' && lines[y+3][x+3] == 'X' {
+				} else if lines[y][x] == 'S' && lines[y+1][x+1] == 'A' && lines[y+2][x+2] == 'M' && lines[y+3][x+3] == 'X' {
 					count++
 				}
 			}
 			// both checks - diagonal above
-			if y >= 4 && x <= len(lines[y])-4 {
-				if lines[y-1][x+1] == 'M' && lines[y-2][x+2] == 'A' && lines[y-3][x+3] == 'S' {
+			if y >= 3 && x <= len(lines[y])-4 {
+				if lines[y][x] == 'X' && lines[y-1][x+1] == 'M' && lines[y-2][x+2] == 'A' && lines[y-3][x+3] == 'S' {
 					count++
-				} else if lines[y-1][x+1] == 'A' && lines[y-2][x+2] == 'M' && lines[y-3][x+3] == 'X' {
+				} else if lines[y][x] == 'S' && lines[y-1][x+1] == 'A' && lines[y-2][x+2] == 'M' && lines[y-3][x+3] == 'X' {
 					count++
 				}
 			}
