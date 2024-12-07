@@ -55,5 +55,24 @@ func First(input string) int {
 	return count
 }
 
-// func Second(input string) int {
-// }
+func Second(input string) int {
+	count := 0
+	lines := strings.Split(input, "\n")
+	lines = lines[:len(lines)-1]
+
+	for y := 1; y < len(lines)-1; y++ {
+		for x := 1; x < len(lines[y])-1; x++ {
+			if lines[y][x] != 'A' {
+				continue
+			}
+			if !((lines[y-1][x-1] == 'M' && lines[y+1][x+1] == 'S') || (lines[y-1][x-1] == 'S' && lines[y+1][x+1] == 'M')) {
+				continue
+			}
+			if !((lines[y-1][x+1] == 'M' && lines[y+1][x-1] == 'S') || (lines[y-1][x+1] == 'S' && lines[y+1][x-1] == 'M')) {
+				continue
+			}
+			count++
+		}
+	}
+	return count
+}

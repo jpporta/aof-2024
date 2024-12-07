@@ -22,29 +22,29 @@ func TestFirstProblem(t *testing.T) {
 		t.Fatal(err)
 	}
 	res := First(string(dat))
-	if res != 184122457 {
+	if res != 2521 {
 		t.Fatalf("Answer not correct %v", res)
 	}
 }
 
-// func TestSecondExample(t *testing.T) {
-// 	dat, err := os.ReadFile("./example.txt")
-// 	if err != nil {
-// 		t.Fatal(err)
-// 	}
-// 	res := Second(string(dat))
-// 	if res != 48 {
-// 		t.Fatalf("Answer not correct: %v", res)
-// 	}
-// }
-//
-// func TestSecondProblem(t *testing.T) {
-// 	dat, err := os.ReadFile("./problem.txt")
-// 	if err != nil {
-// 		t.Fatal(err)
-// 	}
-// 	res := Second(string(dat))
-// 	if res != 21142653 {
-// 		t.Fatalf("Answer not correct: %v", res)
-// 	}
-// }
+func TestSecondExample(t *testing.T) {
+	dat, err := os.ReadFile("./example.txt")
+	if err != nil {
+		t.Fatal(err)
+	}
+	res := Second(string(dat))
+	if res != 9 {
+		t.Fatalf("Answer not correct: %v", res)
+	}
+}
+
+func TestSecondProblem(t *testing.T) {
+	dat, err := os.ReadFile("./problem.txt")
+	if err != nil {
+		t.Fatal(err)
+	}
+	res := Second(string(dat))
+	if res != 1912 {
+		t.Fatalf("Answer not correct: %v", res)
+	}
+}
